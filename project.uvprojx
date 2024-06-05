@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>.\Start;.\Library;.\User;.\SYSTEM;.\Hardware;.\PCA9685;.\ActionGroup</IncludePath>
+              <IncludePath>.\Start;.\Library;.\User;.\SYSTEM;.\Hardware;.\PCA9685;.\ActionGroup;.\BodyMove</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -783,6 +783,21 @@
               <FileName>Action.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\ActionGroup\Action.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>BodyMove</GroupName>
+          <Files>
+            <File>
+              <FileName>bodymove.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\BodyMove\bodymove.c</FilePath>
+            </File>
+            <File>
+              <FileName>bodymove.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\BodyMove\bodymove.h</FilePath>
             </File>
           </Files>
         </Group>

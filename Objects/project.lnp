@@ -36,6 +36,7 @@
 ".\objects\pwm.o"
 ".\objects\servo.o"
 ".\objects\action.o"
+".\objects\bodymove.o"
 ".\objects\main.o"
 ".\objects\stm32f10x_it.o"
 --strict --scatter ".\Objects\project.sct"

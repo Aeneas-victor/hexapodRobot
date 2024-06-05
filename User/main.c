@@ -10,15 +10,16 @@
 //left A0
 int main(void)
 {
+	uint8_t a=0;
 	PCA9685_Init(50,180);	
 	Servo_Init();
 	standnormal();
-
 	while(1)
 	{
-		test();
-		
+		//side_leg_lift();
+		//test();
 		//AdvanceMove();
+		_Meanwhile_Advance_Move(&a);
 	}
 }
 
