@@ -59,12 +59,12 @@ int8_t advanceLeftRightLeft_Uplift[6]=//左腿移动抬起角度枚举
 {
 /////10,100,100,60,30,
 ///源55,60, 70, 100,60,110
-	 -30,30,30,-30,-20,-10
+	 -40,50,30,-30,-20,-10
 //编号13,8, 10,  3,5,left
 };
 int8_t advanceLeftRightLeft_LayDown[6]=//左腿移动放下角度枚举
 {
-	10,0, -20,0  ,20,0
+	-30,-10, -20,0  ,20,0
 ////70,60,50,100,80
 ////
 };
@@ -81,12 +81,12 @@ uint8_t advanceLeftMoveModule[5]=//左腿移动的零部件枚举
 int8_t advanceRightLeftRight_Uplift[6]=//右腿移动抬起角度枚举
 {
 //源60,90,90,70,60,70
-	10,30,-40,20,20,20
+	0,30,-40,20,20,20
 ////12   9  11 2 4,right
 };
 int8_t advanceRightLeftRight_LayDown[6]=//右腿移动放下角度枚举
 {
-	-40,20,0,0,-20,0
+	-50,20,10,0,-20,0
 ////40,110,85,70,40
 };
 
@@ -182,7 +182,7 @@ void trial_funtion(void)
 }
 void _move_Toleg(front_Leg _leg,float _leg_angle,uint8_t* bodyModule,int8_t* ModuleAngle)
 {
-	_leg(_leg_angle);
+	//_leg(_leg_angle);
 	//Delay_ms(150);
 	for(uint8_t i=0;i<5;i++)
 	{
@@ -237,8 +237,9 @@ void _Meanwhile_Advance_Move(uint8_t* a)
 	while(1)
 	{
 		if(*a==0){
-		_move_Toleg(ServoLegRight_SetAngle,advanceRightLeftRight_LayDown[5]+Alone_Servo[1],advanceRightMoveModule,advanceRightLeftRight_LayDown);}
-		_move_Toleg(ServoLegLeft_SetAngle,advanceLeftRightLeft_Uplift[5]+Alone_Servo[0],advanceLeftMoveModule,advanceLeftRightLeft_Uplift);
+			_move_Toleg(ServoLegRight_SetAngle,Alone_Servo[1]+advanceRightLeftRight_LayDown[5],advanceRightMoveModule,advanceRightLeftRight_LayDown);
+		}//右腿放下代码
+		_move_Toleg(ServoLegLeft_SetAngle,Alone_Servo[0]+advanceLeftRightLeft_Uplift[5],advanceLeftMoveModule,advanceLeftRightLeft_Uplift);//左腿抬起
 		if(TIM2_IQRHandler()==1)
 		{
 			break;
@@ -248,8 +249,8 @@ void _Meanwhile_Advance_Move(uint8_t* a)
 	Timer_Init();
 	while(1)
 	{
-		_move_Toleg(ServoLegLeft_SetAngle,advanceLeftRightLeft_LayDown[5]+Alone_Servo[0],advanceLeftMoveModule,advanceLeftRightLeft_LayDown);
-		_move_Toleg(ServoLegRight_SetAngle,advanceLeftRightLeft_Uplift[5]+Alone_Servo[1],advanceRightMoveModule,advanceRightLeftRight_Uplift);
+		_move_Toleg(ServoLegLeft_SetAngle,advanceLeftRightLeft_LayDown[5]+Alone_Servo[0],advanceLeftMoveModule,advanceLeftRightLeft_LayDown);//左腿放下
+		_move_Toleg(ServoLegRight_SetAngle,advanceRightLeftRight_Uplift[5]+Alone_Servo[1],advanceRightMoveModule,advanceRightLeftRight_Uplift);//右腿抬起
 		if(TIM2_IQRHandler()==1)
 		{
 			break;

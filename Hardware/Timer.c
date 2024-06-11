@@ -6,7 +6,7 @@ void Timer_Init()
 	TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure;
 	TIM_TimeBaseInitStructure.TIM_ClockDivision=TIM_CKD_DIV1;
 	TIM_TimeBaseInitStructure.TIM_CounterMode=TIM_CounterMode_Up;
-	TIM_TimeBaseInitStructure.TIM_Period=5000-1;
+	TIM_TimeBaseInitStructure.TIM_Period=4000-1;
 	TIM_TimeBaseInitStructure.TIM_Prescaler=7200-1;
 	//////////////////////////预分频器
 	TIM_TimeBaseInitStructure.TIM_RepetitionCounter=0;
