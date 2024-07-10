@@ -12,18 +12,18 @@ enum Body{
 	middleRight_joint,middleLeft_joint,//11
 	
 	frontRight_joint,frontLeft_joint,//13
-	frontRight_foot,frontLeft_foot//15
+	frontRight_leg,frontLeft_leg//15
 	
 };
 
 
-void Stand_High(void);
-void trial_funtion(void);
+void Stand_High_function(void);
+
 void standnormal(void);
-void _move_Toleg(front_Leg _leg,float _leg_angle,uint8_t* bodyModule,int8_t* ModuleAngle);//移动函数
+void _move_Toleg(uint8_t* bodyModule,int8_t* ModuleAngle);//移动函数
 void AdvanceMove(void);
-void _Meanwhile_Advance_Move(uint8_t* a);
-void _Move_(void);
+void _Meanwhile_Advance_Move(void);
+
 void normal(uint8_t* action);
 void side_leg_lift(void);
 #endif

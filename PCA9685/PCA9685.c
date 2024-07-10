@@ -46,7 +46,6 @@ void PCA9685_Write(u8 addr,u8 data)
 	
 	IIC_Stop();
 	
-	
 }
 
 u8 PCA9685_Read(u8 addr)
@@ -133,6 +132,8 @@ void setAngle(u8 num,u8 angle)
 	off = (u32)(158+angle*2.2);
 	PCA9685_setPWM(num,0,off);
 }
+
+
 
 
 
