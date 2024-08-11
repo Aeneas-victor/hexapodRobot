@@ -795,20 +795,20 @@
               <FileType>5</FileType>
               <FilePath>.\ActionGroup\Action.h</FilePath>
             </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>BodyMove</GroupName>
-          <Files>
             <File>
-              <FileName>bodymove.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\BodyMove\bodymove.c</FilePath>
+              <FileName>common.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ActionGroup\common.h</FilePath>
             </File>
             <File>
-              <FileName>bodymove.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\BodyMove\bodymove.h</FilePath>
+              <FileName>rotation.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\ActionGroup\rotation.c</FilePath>
+            </File>
+            <File>
+              <FileName>WavyGait.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\ActionGroup\WavyGait.c</FilePath>
             </File>
           </Files>
         </Group>

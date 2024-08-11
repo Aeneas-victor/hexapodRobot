@@ -35,5 +35,6 @@
 .\objects\main.o: .\Hardware\Timer.h
 .\objects\main.o: .\PCA9685\Motor.h
 .\objects\main.o: .\ActionGroup\Action.h
+.\objects\main.o: .\ActionGroup\common.h
 .\objects\main.o: .\Hardware\JDY31.h
 .\objects\main.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
