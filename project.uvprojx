@@ -10,6 +10,7 @@
       <TargetName>Target 1</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
+      <pArmCC>5060960::V5.06 update 7 (build 960)::.\ARMCC</pArmCC>
       <pCCUsed>5060960::V5.06 update 7 (build 960)::.\ARMCC</pCCUsed>
       <uAC6>0</uAC6>
       <TargetOption>
@@ -340,7 +341,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>.\Start;.\Library;.\User;.\SYSTEM;.\Hardware;.\PCA9685;.\ActionGroup</IncludePath>
+              <IncludePath>.\Start;.\Library;.\User;.\SYSTEM;.\Hardware;.\PCA9685;.\ActionGroup;.\BodyMove</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -800,14 +801,14 @@
               <FilePath>.\ActionGroup\common.h</FilePath>
             </File>
             <File>
-              <FileName>WavyGait.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\ActionGroup\WavyGait.c</FilePath>
-            </File>
-            <File>
               <FileName>rotation.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\ActionGroup\rotation.c</FilePath>
+            </File>
+            <File>
+              <FileName>WavyGait.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\ActionGroup\WavyGait.c</FilePath>
             </File>
           </Files>
         </Group>
