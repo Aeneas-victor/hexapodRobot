@@ -33,4 +33,5 @@
 .\objects\action.o: .\PCA9685\PCA9685.h
 .\objects\action.o: .\PCA9685\servo.h
 .\objects\action.o: ActionGroup\Action.h
+.\objects\action.o: ActionGroup\common.h
 .\objects\action.o: .\Hardware\Timer.h

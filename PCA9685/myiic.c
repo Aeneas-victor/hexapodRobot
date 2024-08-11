@@ -15,7 +15,7 @@ void IIC_Init(void)
  
 	IIC_SCL=1;
 	IIC_SDA=1;
-
+	
 }
 //产生IIC起始信号
 void IIC_Start(void)

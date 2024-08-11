@@ -10,7 +10,6 @@
       <TargetName>Target 1</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pArmCC>5060960::V5.06 update 7 (build 960)::.\ARMCC</pArmCC>
       <pCCUsed>5060960::V5.06 update 7 (build 960)::.\ARMCC</pCCUsed>
       <uAC6>0</uAC6>
       <TargetOption>
@@ -341,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>.\Start;.\Library;.\User;.\SYSTEM;.\Hardware;.\PCA9685;.\ActionGroup;.\BodyMove</IncludePath>
+              <IncludePath>.\Start;.\Library;.\User;.\SYSTEM;.\Hardware;.\PCA9685;.\ActionGroup</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -795,20 +794,20 @@
               <FileType>5</FileType>
               <FilePath>.\ActionGroup\Action.h</FilePath>
             </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>BodyMove</GroupName>
-          <Files>
             <File>
-              <FileName>bodymove.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\BodyMove\bodymove.c</FilePath>
+              <FileName>common.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ActionGroup\common.h</FilePath>
             </File>
             <File>
-              <FileName>bodymove.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\BodyMove\bodymove.h</FilePath>
+              <FileName>WavyGait.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\ActionGroup\WavyGait.c</FilePath>
+            </File>
+            <File>
+              <FileName>rotation.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\ActionGroup\rotation.c</FilePath>
             </File>
           </Files>
         </Group>

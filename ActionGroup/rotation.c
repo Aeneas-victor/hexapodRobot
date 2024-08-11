@@ -1,12 +1,13 @@
+#include "Action.h"
 /* USER CODE BEGIN Header */
 /**
   ******************************************************************************
-  * @file           : main.c
-  * @brief          : 主程序代码
+  * @file           : rotation.c
+  * @brief          : 旋转动作组
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2024- aeneas-杨金鹏
+  * Copyright (c) 2024-aeneas
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -21,33 +22,35 @@
 #include "Delay.h"
 #include "PCA9685.h"
 #include "servo.h"
-#include "Timer.h"
-#include "Motor.h"
 #include "Action.h"
-#include "JDY31.h"
-//right A1
-//left A0
-int main(void)
-{
-	PCA9685_Init(50,180);	
-	
-	Servo_Init();
+#include "Timer.h"
+extern uint8_t body[16];
+extern uint8_t Alone_Servo[2];
+extern uint8_t standAngle[16];
+extern uint8_t stand_high[16];
 
-//    printf("AT+NAME\r\n");      //查询蓝牙名字
-//    Delay_ms(100);
+uint8_t rotation_joint[6]=
+{
+	frontLeft_joint,middleLeft_joint,rearLeft_joint,rearRight_joint,middleRight_joint,frontRight_joint
+};
+
+static void rotation_move(uint8_t* bodyModule,int8_t test)
+{
+	for(uint8_t i=0;i<6;i++)
+	{
+		setAngle(bodyModule[i],stand_high[bodyModule[i]]+test);
+	}
+}
+void Roration_place(uint8_t direction)//暂设定旋转20°
+{//0 left /////// 1 right
+	int8_t angle=direction==0?20:-20;
 	Timer_Init();
 	while(1)
 	{
-		standnormal();
+		rotation_move(rotation_joint,angle);
+		Delay_ms(5);
 		if(TIM2_IQRHandler()==1)
 			break;
 	}
-	Delay_s(5);
-	while(1)
-	{
-		Roration_place(0);
-		//_Meanwhile_Advance_Move();
-	}
+	Delay_ms(5);
 }
-
-
