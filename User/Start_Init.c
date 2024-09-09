@@ -1,13 +1,12 @@
-#include "Action.h"
 /* USER CODE BEGIN Header */
 /**
   ******************************************************************************
-  * @file           : rotation.c
-  * @brief          : 旋转动作组
+  * @file           : Start_Init
+  * @brief          : program init
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2024-aeneas
+  * Copyright (c) 2024- aeneas-杨金鹏
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -22,23 +21,17 @@
 #include "Delay.h"
 #include "PCA9685.h"
 #include "servo.h"
-#include "Action.h"
 #include "Timer.h"
-extern uint8_t body[16];
-extern uint8_t Alone_Servo[2];
-extern uint8_t standAngle[16];
+#include "Motor.h"
+#include "Action.h"
+#include "JDY31.h"
 extern const uint8_t Angle_Init[16];
 extern uint8_t Angle_Start[16];
-uint8_t rotation_joint[6]=
+void Start_Init()
 {
-	frontLeft_joint,middleLeft_joint,rearLeft_joint,rearRight_joint,middleRight_joint,frontRight_joint
-};
-
-void Roration_place(uint8_t direction)//暂设定旋转20°
-{//0 left /////// 1 right
-	int8_t angle=direction==0?20:-20;
-	for(uint8_t i=0;i<6;i++)
+	for(uint8_t i=0;i<16;i++)
 	{
-		Angle_Start[rotation_joint[i]]=Angle_Start[rotation_joint[i]]+angle;
+		Angle_Start[i]=Angle_Init[i];
 	}
 }
+

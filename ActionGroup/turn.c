@@ -2,8 +2,8 @@
 /* USER CODE BEGIN Header */
 /**
   ******************************************************************************
-  * @file           : rotation.c
-  * @brief          : 旋转动作组
+  * @file           : turn.c
+  * @brief          : 转弯动作组
   ******************************************************************************
   * @attention
   *
@@ -29,16 +29,19 @@ extern uint8_t Alone_Servo[2];
 extern uint8_t standAngle[16];
 extern const uint8_t Angle_Init[16];
 extern uint8_t Angle_Start[16];
-uint8_t rotation_joint[6]=
+uint8_t turn_part[12]=
 {
-	frontLeft_joint,middleLeft_joint,rearLeft_joint,rearRight_joint,middleRight_joint,frontRight_joint
+	frontLeft_leg,frontLeft_joint,middleLeft_leg,middleLeft_joint,rearLeft_leg,rearLeft_joint,
+	rearRight_leg,rearRight_joint,middleLeft_leg,middleRight_joint,frontRight_leg,frontRight_joint
+};
+uint8_t turn_joint[6]=
+{
+	frontLeft_joint,middleLeft_joint,rearLeft_joint,rearRight_joint,middleRight_joint,frontLeft_joint
 };
 
-void Roration_place(uint8_t direction)//暂设定旋转20°
-{//0 left /////// 1 right
-	int8_t angle=direction==0?20:-20;
-	for(uint8_t i=0;i<6;i++)
-	{
-		Angle_Start[rotation_joint[i]]=Angle_Start[rotation_joint[i]]+angle;
-	}
+void Turn_func()
+{
+	
 }
+
+

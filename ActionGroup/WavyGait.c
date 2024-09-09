@@ -27,7 +27,8 @@
 extern uint8_t body[16];
 extern uint8_t Alone_Servo[2];
 extern uint8_t standAngle[16];
-extern uint8_t stand_high[16];
+extern const uint8_t Angle_Init[16];
+extern uint8_t Angle_Start[16];
 //////////////////////////////////////////////
 int8_t Wavy_Gait_advanceLeft_Uplift[6]=//波浪步态抬起角度枚举
 {
@@ -55,10 +56,43 @@ uint8_t Wavy_Gait_advanceALLRightMoveModule[6]=
 {
 	rearRight_leg,rearRight_joint,middleRight_leg,middleRight_joint,frontRight_leg,frontRight_joint
 };
-
+void move_wavygait(uint8_t* bodyMoudule,int8_t* ModuleAngle,uint8_t testx)
+{
+	for(uint8_t i=testx;i<testx+2;i++)
+	{
+		setAngle(bodyMoudule[i],Angle_Start[bodyMoudule[i]]+ModuleAngle[i]);
+	}
+}
 void Wavy_Gait_Advance_Move()
 {
-	return;
+	Timer_Init();
+	while(1)
+	{
+		move_wavygait(Wavy_Gait_advanceALLRightMoveModule,Wavy_Gait_advanceRight_Uplift,4);
+		if(TIM2_IQRHandler()==1)
+		{
+			break;
+		}
+	}
+	Timer_Init();
+	while(1)
+	{
+		move_wavygait(Wavy_Gait_advanceALLRightMoveModule,Wavy_Gait_advanceRight_Uplift,2);
+		if(TIM2_IQRHandler()==1)
+		{
+			break;
+		}
+	}
+	Timer_Init();
+	while(1)
+	{
+		move_wavygait(Wavy_Gait_advanceALLRightMoveModule,Wavy_Gait_advanceRight_Uplift,0);
+		if(TIM2_IQRHandler()==1)
+		{
+			break;
+		}
+	}
+	
 }
 
 

@@ -18,6 +18,7 @@
 /* USER CODE BEGIN Header */
 
 #include "stm32f10x.h"
+#include<string.h>
 #include "sys.h"
 #include "Delay.h"
 #include "PCA9685.h"
@@ -25,6 +26,7 @@
 #include "Action.h"
 #include "Timer.h"
 //#include "Motor.h"
+void (*MoveTemplete)(void);
 
 const uint8_t body[16]={
 				//后腿
@@ -40,19 +42,21 @@ const uint8_t body[16]={
 				frontRight_leg,frontLeft_leg
 };
 uint8_t Alone_Servo[2]={30,150};//0L 1R
-uint8_t standAngle[16]={//站立姿态枚举
+const uint8_t standAngle[16]={//站立姿态枚举
 	180,0,150,30, //3
     60,60,175,0, //7
     130,40,70,110,//11
 	60,40,175,0//15
 };
-uint8_t stand_high[16]=
+const uint8_t Angle_Init[16]=
 {
 	140,20,60,90,
 	100,95,145,20,
 	60,90,90,85,//11
 	55,110,30,100
 };
+extern uint8_t Angle_Start[16];
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 int8_t AlternatingTripodGait_advanceLeft_Uplift[6]=//左腿移动抬起角度枚举
 {
@@ -107,9 +111,93 @@ void _move_Toleg(uint8_t* bodyModule,int8_t* ModuleAngle)
 {
 	for(uint8_t i=0;i<6;i++)
 	{
-		setAngle(bodyModule[i],stand_high[bodyModule[i]]+ModuleAngle[i]);
+		setAngle(bodyModule[i],Angle_Start[bodyModule[i]]+ModuleAngle[i]);
 		//Delay_ms(150);
 	}
+}
+uint8_t SingleWalkMove_Module[12]=
+{
+	frontLeft_leg,frontLeft_joint,frontRight_leg,frontRight_joint,
+	middleLeft_leg,middleLeft_joint,middleRight_leg,middleRight_joint,
+	rearLeft_leg,rearLeft_joint,rearRight_leg,rearRight_joint
+};
+int8_t SingleWalkMove_advance_Uplift[12]=
+{
+	-30,-10,30,10,-30,-20,30,20,-30,-20,30,20
+};
+int8_t SingleWalkMove_advance_LayDown[12]=
+{
+	0,30,0,-30,0,20,0,-20,0,20,0,-20
+};
+void AdvanceSingleWalk(void)
+{
+	setAngle(SingleWalkMove_Module[0],Angle_Start[SingleWalkMove_Module[0]]-30);
+	Delay_ms(200);
+	setAngle(SingleWalkMove_Module[1],Angle_Start[SingleWalkMove_Module[1]]-10);
+	Delay_ms(200);
+	setAngle(SingleWalkMove_Module[0],Angle_Start[SingleWalkMove_Module[0]]);
+	Delay_ms(200);
+	setAngle(SingleWalkMove_Module[1],Angle_Start[SingleWalkMove_Module[1]]+30);
+	Delay_ms(200);
+	setAngle(SingleWalkMove_Module[2],Angle_Start[SingleWalkMove_Module[2]]+30);
+	Delay_ms(200);
+	setAngle(SingleWalkMove_Module[3],Angle_Start[SingleWalkMove_Module[3]]+10);
+	Delay_ms(200);
+	setAngle(SingleWalkMove_Module[2],Angle_Start[SingleWalkMove_Module[2]]);
+	Delay_ms(200);
+	setAngle(SingleWalkMove_Module[3],Angle_Start[SingleWalkMove_Module[3]]-30);
+	Delay_ms(200);
+	
+	setAngle(SingleWalkMove_Module[4],Angle_Start[SingleWalkMove_Module[4]]-30);
+	Delay_ms(200);
+	setAngle(SingleWalkMove_Module[5],Angle_Start[SingleWalkMove_Module[5]]-20);
+	Delay_ms(200);
+	setAngle(SingleWalkMove_Module[4],Angle_Start[SingleWalkMove_Module[4]]);
+	Delay_ms(200);
+	setAngle(SingleWalkMove_Module[5],Angle_Start[SingleWalkMove_Module[5]]+20);
+	Delay_ms(200);
+	
+	setAngle(SingleWalkMove_Module[6],Angle_Start[SingleWalkMove_Module[6]]+30);
+	Delay_ms(200);
+	setAngle(SingleWalkMove_Module[7],Angle_Start[SingleWalkMove_Module[7]]+20);
+	Delay_ms(200);
+	setAngle(SingleWalkMove_Module[6],Angle_Start[SingleWalkMove_Module[6]]);
+	Delay_ms(200);
+	setAngle(SingleWalkMove_Module[7],Angle_Start[SingleWalkMove_Module[7]]-20);
+	Delay_ms(200);
+	
+	setAngle(SingleWalkMove_Module[8],Angle_Start[SingleWalkMove_Module[8]]-30);
+	Delay_ms(200);
+	setAngle(SingleWalkMove_Module[9],Angle_Start[SingleWalkMove_Module[9]]-20);
+	Delay_ms(200);
+	setAngle(SingleWalkMove_Module[8],Angle_Start[SingleWalkMove_Module[8]]);
+	Delay_ms(200);
+	setAngle(SingleWalkMove_Module[9],Angle_Start[SingleWalkMove_Module[9]]+20);
+	Delay_ms(200);
+	
+	setAngle(SingleWalkMove_Module[10],Angle_Start[SingleWalkMove_Module[10]]+30);
+	Delay_ms(200);
+	setAngle(SingleWalkMove_Module[11],Angle_Start[SingleWalkMove_Module[11]]+20);
+	Delay_ms(200);
+	setAngle(SingleWalkMove_Module[10],Angle_Start[SingleWalkMove_Module[10]]);
+	Delay_ms(200);
+	setAngle(SingleWalkMove_Module[11],Angle_Start[SingleWalkMove_Module[11]]-20);
+	Delay_ms(200);
+	
+//	for(uint8_t i=0;i<6;i++)
+//	{
+//		for(uint8_t j=0;j<2;j++)
+//		{
+//			int8_t *Module_angle;
+//			if(i/2==0)
+//			{
+//				Module_angle=SingleWalkMove_advance_Uplift;
+//			}
+//			else Module_angle=SingleWalkMove_advance_LayDown;
+//			setAngle(SingleWalkMove_Module[i*2+j],Angle_Start[SingleWalkMove_Module[i]]+Module_angle[i*2+j]);
+//			Delay_ms(200);
+//		}
+//	}
 }
 void AdvanceMove(void)
 {
@@ -182,10 +270,9 @@ void _Meanwhile_Advance_Move()
 }
 
 
-void normal(uint8_t* action)
+void normal(const uint8_t* action)
 {
 	ServoLegLeft_SetAngle(Alone_Servo[0]);
-	
 	ServoLegRight_SetAngle(Alone_Servo[1]);
 	//Delay_ms(100);
 	for(uint8_t i=0;i<16;i++)
@@ -193,11 +280,10 @@ void normal(uint8_t* action)
 		setAngle(body[i],action[i]);
 		//Delay_ms(100);
 	}
-	Delay_ms(600);
 }
 void standnormal(void)
 {
-	normal(stand_high);
+	normal(Angle_Start);
 }
 
 

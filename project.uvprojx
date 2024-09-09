@@ -715,6 +715,16 @@
               <FileType>5</FileType>
               <FilePath>.\Hardware\JDY31.h</FilePath>
             </File>
+            <File>
+              <FileName>Exti.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\Exti.c</FilePath>
+            </File>
+            <File>
+              <FileName>Exti.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\Exti.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -810,6 +820,11 @@
               <FileType>1</FileType>
               <FilePath>.\ActionGroup\WavyGait.c</FilePath>
             </File>
+            <File>
+              <FileName>turn.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\ActionGroup\turn.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -834,6 +849,11 @@
               <FileName>stm32f10x_it.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\User\stm32f10x_it.h</FilePath>
+            </File>
+            <File>
+              <FileName>Start_Init.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\User\Start_Init.c</FilePath>
             </File>
           </Files>
         </Group>

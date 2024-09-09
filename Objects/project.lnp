@@ -30,6 +30,7 @@
 ".\objects\oled.o"
 ".\objects\timer.o"
 ".\objects\jdy31.o"
+".\objects\exti.o"
 ".\objects\pca9685.o"
 ".\objects\myiic.o"
 ".\objects\tb6612.o"
@@ -37,10 +38,12 @@
 ".\objects\pwm.o"
 ".\objects\servo.o"
 ".\objects\action.o"
-".\objects\wavygait.o"
 ".\objects\rotation.o"
+".\objects\wavygait.o"
+".\objects\turn.o"
 ".\objects\main.o"
 ".\objects\stm32f10x_it.o"
+".\objects\start_init.o"
 --library_type=microlib --strict --scatter ".\Objects\project.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

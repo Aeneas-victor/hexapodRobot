@@ -5,11 +5,11 @@
 #include <stdarg.h>
 
 char Serial_RxPacket[100]; //USART1_IRQHandler那接受数据帧中的数据部分存储位置
-uint8_t Serial_RxFlag;
+uint8_t Serial_RxFlag=0;
 
 void Serial_Init(void)
 {
-		//这两行代码用来使能USART1和GPIOA的时钟
+	//这两行代码用来使能USART1和GPIOA的时钟
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
 	
@@ -148,7 +148,7 @@ void USART1_IRQHandler(void)//USART1串口中断服务函数
 				pRxPacket ++;
 			}
 		}
-					USART_ClearITPendingBit(USART1, USART_IT_RXNE);//手动清除USART1接收中断标志位，以结束中断处理过程
+		USART_ClearITPendingBit(USART1, USART_IT_RXNE);//手动清除USART1接收中断标志位，以结束中断处理过程
 	}
 }
 	//在蓝牙上写"0on1"即可实现打开灯，"0off1"关闭灯

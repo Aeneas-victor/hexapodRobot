@@ -28,6 +28,7 @@
 .\objects\action.o: .\Library\stm32f10x_usart.h
 .\objects\action.o: .\Library\stm32f10x_wwdg.h
 .\objects\action.o: .\Library\misc.h
+.\objects\action.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\action.o: .\SYSTEM\sys.h
 .\objects\action.o: .\Hardware\Delay.h
 .\objects\action.o: .\PCA9685\PCA9685.h
